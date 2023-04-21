@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  dnsresolve:
+    build: ./java-webapi
+    container_name: dnsresolve-api
+    ports:
+      - "8080:8080"
+  nginx:
+    build: ./nginx
+    container_name: dnsresolve-proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - resolveip
